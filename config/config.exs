@@ -3,21 +3,25 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
+
+# General application configuration
 use Mix.Config
 
 # Configures the endpoint
-config :modest_greeter, ModestGreeter.Endpoint,
+config :modest_greeter, ModestGreeterWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "6HJMS0Ax1v2Czhge8QJI0i5i7Jh3Tmy44mLVNN5OIlYpzTMCDJzmClsx1D4KQJBl",
-  render_errors: [view: ModestGreeter.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ModestGreeter.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "aR1hXqai0m9AqI5iBBzfHM6zozE0ELvJJcpmuO72T9B7PjlmQT6iGhDfEuMvQ4D9",
+  render_errors: [view: ModestGreeterWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: ModestGreeter.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
