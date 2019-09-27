@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const GlobImporter = require('node-sass-glob-importer');
 
 module.exports = (env, options) => ({
   optimization: {
@@ -33,32 +32,21 @@ module.exports = (env, options) => ({
         test: /\.scss/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              url: false,
-              importLoaders: 2
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              importer: GlobImporter()
-            }
-          }
+          'css-loader',
+          'sass-loader',
+          'import-glob-loader'
         ]
       },
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: {
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-        }
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: {
-          loader: 'file-loader'
-        }
+        test: /\.(ttf|eot|woff|woff2|svg)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: "[name].[ext]",
+            outputPath: './webfonts',
+            publicPath: '../webfonts',
+          }
+        }]
       }
     ]
   },
@@ -68,10 +56,6 @@ module.exports = (env, options) => ({
       {
         from: 'static/',
         to: '../'
-      },
-      {
-        from: 'node_modules/@fortawesome/fontawesome-free/webfonts/',
-        to: '../webfonts/'
       },
     ])
   ]
