@@ -31,10 +31,18 @@ module.exports = (env, options) => ({
       {
         test: /\.scss/,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-          'import-glob-loader'
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          },
+          {
+            loader: 'import-glob-loader'
+          }
         ]
       },
       {
