@@ -42,9 +42,9 @@ module.exports = (env, options) => ({
         use: [{
           loader: 'file-loader',
           options: {
+            limit: 10000,
             name: "[name].[ext]",
-            outputPath: './webfonts',
-            publicPath: '../webfonts',
+            outputPath: '../webfonts'
           }
         }]
       }
