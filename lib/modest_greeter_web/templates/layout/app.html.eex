@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <%= render @view_module, @view_template, assigns %>
+    <header>
+      <h1>ModestGreeter</h1>
+    </header>
+    <main>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <footer>
+      &copy; 2019 Oiax Inc.
+    </footer>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
