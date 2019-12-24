@@ -3,5 +3,5 @@
   <p class="lead">ModestGreeter へようこそ！</p>
   <hr>
   <p><%= link "このサイトについて",
-    to: Routes.top_path(@conn, :abaut, []) %></p>
+    to: Routes.top_path(@conn, :about, []) %></p>
 </div>
