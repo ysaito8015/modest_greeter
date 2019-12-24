@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>ModestGreeter</h1>
+      <h1><a href="/">ModestGreeter</a></h1>
     </header>
     <main>
       <%= render @view_module, @view_template, assigns %>
