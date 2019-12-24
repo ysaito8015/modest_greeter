@@ -5,3 +5,8 @@
   <p><%= link "このサイトについて",
     to: Routes.top_path(@conn, :about, []) %></p>
 </div>
+<nav class="nav justify-content-center mb-3">
+  <a href="/hello/Alice" class="nav-link">Alice</a>
+  <a href="/hello/Bob" class="nav-link">Bob</a>
+  <a href="/hello/Charlie" class="nav-link">Charlie</a>
+</nav>
